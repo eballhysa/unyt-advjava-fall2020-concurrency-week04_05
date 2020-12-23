@@ -1,7 +1,5 @@
 package com.eltonb.concurrency.motivation.base;
 
-import java.util.Arrays;
-
 public interface SimpleArray {
     void add(int value);
 

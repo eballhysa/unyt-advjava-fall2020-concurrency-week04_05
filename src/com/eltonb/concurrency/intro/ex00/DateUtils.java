@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.eltonb.concurrency.motivation.base;
+package com.eltonb.concurrency.intro.ex00;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,17 +12,18 @@ import java.util.Date;
  * @author elton.ballhysa
  */
 public class DateUtils {
-    
-    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 
-    //wrong - SimpleDateFormat is not thread-safe
-    public static String format1(Date date) {
+    public static final SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+
+    private DateUtils() {
+    }
+
+    public synchronized static String formatDateAsDDMMYYYY1(Date date) {
         return formatter.format(date);
     }
 
-    //correct
-    public static String format2(Date date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+    public static String formatDateAsDDMMYYYY2(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         return formatter.format(date);
     }
 }

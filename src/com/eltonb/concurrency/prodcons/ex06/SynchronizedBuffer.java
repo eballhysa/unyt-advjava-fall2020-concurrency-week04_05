@@ -5,18 +5,14 @@ package com.eltonb.concurrency.prodcons.ex06;
 
 import com.eltonb.concurrency.prodcons.base.Buffer;
 
-public class SynchronizedBuffer implements Buffer
-{
+public class SynchronizedBuffer implements Buffer {
    private int buffer = -1; // shared by producer and consumer threads
    private boolean occupied = false;
    
    // place value into buffer
-   public synchronized void blockingPut(int value) 
-      throws InterruptedException
-   {
+   public synchronized void blockingPut(int value) throws InterruptedException {
         // while there are no empty locations, place thread in waiting state
-        if (occupied) 
-        {
+        while (occupied)  {
            // output thread information and buffer information, then wait
            System.out.println("Producer tries to write."); // for demo only
            displayState("Buffer full. Producer waits."); // for demo only
@@ -35,11 +31,9 @@ public class SynchronizedBuffer implements Buffer
    } // end method blockingPut; releases lock on SynchronizedBuffer 
     
    // return value from buffer
-   public synchronized int blockingGet() throws InterruptedException
-   {
+   public synchronized int blockingGet() throws InterruptedException {
       // while no data to read, place thread in waiting state
-      while (!occupied)
-      {
+      while (!occupied) {
          // output thread information and buffer information, then wait
          System.out.println("Consumer tries to read."); // for demo only
          displayState("Buffer empty. Consumer waits."); // for demo only

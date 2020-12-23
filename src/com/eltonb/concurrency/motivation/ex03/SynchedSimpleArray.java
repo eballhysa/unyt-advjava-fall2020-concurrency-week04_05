@@ -23,7 +23,7 @@ public class SynchedSimpleArray implements SimpleArray {
    public synchronized void add(int value) {
        int position = writeIndex; // store the write index
        int millis = generator.nextInt(500);
-       sleepSilently(500);
+       sleepSilently(millis);
 
        // put value in the appropriate element
        array[position] = value;

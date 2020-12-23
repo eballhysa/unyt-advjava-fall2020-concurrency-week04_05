@@ -19,9 +19,9 @@ public class Utils {
             SecureRandom random = new SecureRandom();
             long sleepTime = random.nextInt(5000);
             String threadName = Thread.currentThread().getName();
-            System.out.printf("Print thread %s for document %s started  at %s\n", threadName, docName, new Date());
+            System.out.printf("printDocument [%s] for document %s started  at %s\n", threadName, docName, new Date());
             Thread.sleep(sleepTime);
-            System.out.printf("Print thread %s for document %s finished at %s (slept %d ms)\n", threadName, docName, new Date(), sleepTime);
+            System.out.printf("printDocument [%s] for document %s finished at %s (slept %d ms)\n", threadName, docName, new Date(), sleepTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
